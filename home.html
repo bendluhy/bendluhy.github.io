@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <title>Ben Dluhy - Portfolio</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="hero">
+      <canvas id="space"></canvas> <!-- 3D Space Background -->
+    <div class="hero-content">
+      <img src="https://media.licdn.com/dms/image/v2/D4E03AQEtv6p-47KEVQ/profile-displayphoto-shrink_100_100/B4EZS5ftowGYAU-/0/1738278886471?e=1762992000&v=beta&t=s4oXCAMxCWcuHl85TauBgPLQ0dHxZHdXDgwX3Bgnuxg" class="profile-pic" alt="Profile photo">
+      <h1>Ben Dluhy</h1>
+      <p>Computer Engineering Student | Developer | Tech Enthusiast</p>
+      <a href="#projects" class="btn">View My Work</a>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I'm a student passionate about computer engineering, software development, and building tech that helps people. 
+      I love working on projects that blend creativity, design, and engineering.
+    </p>
+  </section>
+  <section id="jobs">
+    <h2>Experience</h2>
+    <div class="job-grid">
+      <div class="job-card">
+        <img src="https://patrolpc.com/wp-content/uploads/2023/09/winglogo.png" alt="Patrol PC Logo" class="job-logo">
+        <div class="job-info">
+          <h3>Patrol PC</h3>
+          <h4>Software Developer Intern</h4>
+          <p>Assisted in testing and developing law enforcement software for the M3 computer. 
+          Helped design and debug interactive control screens used in real-world patrol environments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <h3>Patrol PC Interface</h3>
+        <p>Assisted in developing and testing law enforcement software interfaces.</p>
+      </div>
+      <div class="project-card">
+        <h3>Tech Club Website</h3>
+        <p>Created a resource site to teach seniors tech skills using HTML, CSS, and JS.</p>
+      </div>
+      <div class="project-card">
+        <h3>Unity Game</h3>
+        <p>Developed a skiing game with physics-based mechanics and pixel art.</p>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+  <div class="footer-content">
+    <p>© 2025 Ben Dluhy</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/benjamin-dluhy-3106a6349/" target="_blank" class="social-icon">
+        <img src="assets/linkedin.svg" alt="LinkedIn" />
+      </a>
+      <a href="https://github.com/bendluhy" target="_blank" class="social-icon">
+        <img src="assets/github.svg" alt="GitHub" />
+      </a>
+    </div>
+  </div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="space.js"></script>
+</body>
+
+</html>
