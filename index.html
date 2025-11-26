@@ -13,7 +13,7 @@
   <header class="hero">
       <canvas id="space"></canvas> <!-- 3D Space Background -->
     <div class="hero-content">
-      <img src="https://media.licdn.com/dms/image/v2/D4E03AQEtv6p-47KEVQ/profile-displayphoto-shrink_100_100/B4EZS5ftowGYAU-/0/1738278886471?e=1762992000&v=beta&t=s4oXCAMxCWcuHl85TauBgPLQ0dHxZHdXDgwX3Bgnuxg" class="profile-pic" alt="Profile photo">
+      <img src="assets/me/headshot.png" class="profile-pic" alt="Profile photo">
       <h1>Ben Dluhy</h1>
       <p>Computer Engineering Student | Developer | Tech Enthusiast</p>
       <a href="#about" class="btn">View My Work</a>
@@ -26,12 +26,23 @@
       I'm a student passionate about computer engineering, software development, and building tech that helps people. 
       I love working on projects that blend creativity, design, and engineering.
     </p>
+  </section>
   <section id="volunteering">
     <h2>Volunteer Work</h2>
     <div class="project-grid">
-      <a href="pages/nastp.html" class="project-card" style="text-decoration:none; color:inherit;">
-        <h3>North Attleboro Senior Technology Club</h3>
-        <p>Visit local senior centers to teach seniors how to use technology.</p>
+      <a href="pages/nastp.html" class="job-card" style="text-decoration:none; color:inherit;">
+        <img src="assets/nastp/nastplogo.png" 
+            alt="NASTP Logo" 
+            class="job-logo">
+            
+        <div class="job-info">
+          <h3>North Attleboro Senior Technology Club</h3>
+          <h4 style="color: rgb(251, 53, 53)">Technology Specialist</h4>
+          <p>
+            Visit multiple senior centers to help older adults learn and feel confident using technology. 
+            Provide one-on-one guidance with smartphones, tablets, computers, and everyday digital skills.
+          </p>
+        </div>
       </a>
     </div>
   </section>
@@ -53,16 +64,8 @@
     <h2>Projects</h2>
     <div class="project-grid">
       <div class="project-card">
-        <h3>Patrol PC Interface</h3>
-        <p>Assisted in developing and testing law enforcement software interfaces.</p>
-      </div>
-      <div class="project-card">
-        <h3>Tech Club Website</h3>
-        <p>Created a resource site to teach seniors tech skills using HTML, CSS, and JS.</p>
-      </div>
-      <div class="project-card">
-        <h3>Unity Game</h3>
-        <p>Developed a skiing game with physics-based mechanics and pixel art.</p>
+        <h3>Context</h3>
+        <p>Building an AI-driven CMO tool that analyzes ecommerce data and delivers weekly founder-level strategy briefs.</p>
       </div>
     </div>
   </section>
@@ -79,8 +82,7 @@
     </div>
   </div>
 </footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="space.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="space.js"></script>
 </body>
-
 </html>
