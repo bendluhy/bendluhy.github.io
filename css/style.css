@@ -108,7 +108,11 @@ section {
   max-width: 900px;
   margin: auto;
 }
-
+#volunteering {
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: auto;
+}
 .job-grid {
   display: grid;
   grid-template-columns: 1fr;
