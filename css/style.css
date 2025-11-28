@@ -35,8 +35,8 @@ body {
   overflow: hidden;
 }
 
-#space {
-  background: radial-gradient(circle at 50% 50%, #0a0033 0%, #030617 30%, #000010 100%);
+#code-rain {
+  background: black;
   position: absolute;
   top: 0; left: 0;
   width: 100%;

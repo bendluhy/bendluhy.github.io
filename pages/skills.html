@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Skill Map - Ben Dluhy</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      .simple-header {
+        background: #0f0f17;
+        color: white;
+        padding: 60px 20px;
+        text-align: center;
+      }
+      .simple-header h1 {
+        font-size: 36px;
+      }
+      .simple-header p {
+        opacity: 0.85;
+      }
+
+      .back-btn {
+        display: inline-block;
+        margin: 20px 0;
+        padding: 10px 16px;
+        background: #efefef;
+        border-radius: 8px;
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: 0.2s ease;
+      }
+      .back-btn:hover {
+        background: #dddddd;
+        transform: translateY(-2px);
+      }
+
+      /* Canvas container */
+      #nodeCanvas {
+        width: 100%;
+        height: 600px;
+        background: #fafafa;
+        border-radius: 14px;
+        margin: 30px 0;
+        cursor: pointer;
+      }
+
+      /* Tooltip */
+      #tooltip {
+        position: absolute;
+        padding: 10px 14px;
+        background: white;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        font-size: 14px;
+        pointer-events: none;
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="simple-header">
+      <h1>Interactive Skill Map</h1>
+      <p>A dynamic node graph of my technical abilities</p>
+    </div>
+
+    <section>
+      <a href="../index.html#about" class="back-btn">← Back</a>
+
+      <p>
+        This interactive skill map visualizes my technical strengths as
+        connected nodes. Hover over a node to highlight relationships. Click a
+        node to view a description of that skill area. The center node
+        represents my core identity as a developer.
+      </p>
+
+      <canvas id="nodeCanvas"></canvas>
+      <div id="tooltip"></div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <p>© 2025 Ben Dluhy</p>
+      </div>
+    </footer>
+
+    <script>
+      const canvas = document.getElementById("nodeCanvas");
+      const tooltip = document.getElementById("tooltip");
+      const ctx = canvas.getContext("2d");
+
+      // Make the canvas CRISP on all screens
+      function resizeCanvas() {
+        const rect = canvas.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+
+        ctx.scale(dpr, dpr);
+      }
+
+      resizeCanvas();
+      window.addEventListener("resize", () => {
+        resizeCanvas();
+        draw();
+      });
+
+      // Clean, crisp font
+      ctx.font = "15px 'Poppins', sans-serif";
+
+      // Node data
+      const nodes = [
+        {
+          name: "Ben Dluhy",
+          x: canvas.width / (2 * (window.devicePixelRatio || 1)),
+          y: canvas.height / (2 * (window.devicePixelRatio || 1)),
+          main: true,
+          info: "Full-stack developer focused on AI, ecommerce, and modern web technologies.",
+        },
+        {
+          name: "Full Stack",
+          x: 200,
+          y: 120,
+          info: "Next.js, React, Tailwind, Python, FastAPI, Supabase.",
+        },
+        {
+          name: "AI & LLMs",
+          x: canvas.width / (window.devicePixelRatio || 1) - 220,
+          y: 140,
+          info: "OpenAI API, GPT models, AI workflows, automation.",
+        },
+        {
+          name: "Ecommerce Tech",
+          x: 180,
+          y: canvas.height / (window.devicePixelRatio || 1) - 140,
+          info: "Shopify API, Klaviyo API, attribution tools.",
+        },
+        {
+          name: "Backend Systems",
+          x: canvas.width / (window.devicePixelRatio || 1) - 260,
+          y: canvas.height / (window.devicePixelRatio || 1) - 160,
+          info: "REST APIs, auth, databases, scaling.",
+        },
+        {
+          name: "UI/UX Design",
+          x: canvas.width / (window.devicePixelRatio || 1) / 2,
+          y: canvas.height / (window.devicePixelRatio || 1) - 60,
+          info: "Component systems, responsive layout, product design.",
+        },
+      ];
+
+      // Node connections
+      const connections = [
+        [0, 1],
+        [0, 2],
+        [0, 3],
+        [0, 4],
+        [0, 5],
+      ];
+
+      // DRAW
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Sharper lines
+        ctx.lineWidth = 1.5;
+        ctx.strokeStyle = "#BFC5D2";
+
+        connections.forEach(([a, b]) => {
+          ctx.beginPath();
+          ctx.moveTo(nodes[a].x, nodes[a].y);
+          ctx.lineTo(nodes[b].x, nodes[b].y);
+          ctx.stroke();
+        });
+
+        // Draw nodes
+        nodes.forEach((node) => {
+          const radius = node.main ? 40 : 28;
+
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, radius, 0, Math.PI * 2);
+          ctx.fillStyle = node.main ? "#4C80FF" : "#ffffff";
+          ctx.fill();
+          ctx.strokeStyle = node.main ? "#3A63C9" : "#D3D3D3";
+          ctx.lineWidth = 2;
+          ctx.stroke();
+
+          // SHARP TEXT
+          ctx.fillStyle = node.main ? "white" : "#222";
+          ctx.font = node.main
+            ? "bold 16px 'Poppins', sans-serif"
+            : "14px 'Poppins', sans-serif";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.fillText(node.name, node.x, node.y);
+        });
+      }
+
+      draw();
+
+      // Handle hover
+      canvas.addEventListener("mousemove", (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+        const mx = e.clientX - rect.left;
+        const my = e.clientY - rect.top;
+
+        let hoverNode = null;
+
+        nodes.forEach((node) => {
+          const dist = Math.hypot(node.x - mx, node.y - my);
+          if (dist < 32) hoverNode = node;
+        });
+
+        if (hoverNode) {
+          tooltip.style.display = "block";
+          tooltip.style.left = e.pageX + 12 + "px";
+          tooltip.style.top = e.pageY + 12 + "px";
+          tooltip.innerHTML = hoverNode.name;
+        } else {
+          tooltip.style.display = "none";
+        }
+      });
+
+      // Click for details
+      canvas.addEventListener("click", (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const mx = e.clientX - rect.left;
+        const my = e.clientY - rect.top;
+
+        nodes.forEach((node) => {
+          const dist = Math.hypot(node.x - mx, node.y - my);
+          if (dist < 32) {
+            alert(node.name + ":\n\n" + node.info);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
