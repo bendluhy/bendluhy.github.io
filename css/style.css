@@ -28,13 +28,6 @@ body {
 }
 
 
-#code-rain {
-  display: none;
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
 
 .hero-content {
   position: relative;
