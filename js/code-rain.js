@@ -113,7 +113,20 @@ function animate() {
   draw();
   animationId = requestAnimationFrame(animate);
 }
-animate();
+// Do NOT auto-start — controlled by easter egg
+window.startMatrix = function () {
+    if (!animationId) {
+        document.getElementById("code-rain").style.display = "block";
+        animate();
+    }
+};
+
+window.stopMatrix = function () {
+    cancelAnimationFrame(animationId);
+    animationId = null;
+    document.getElementById("code-rain").style.display = "none";
+};
+
 
 window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
