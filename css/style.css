@@ -44,22 +44,25 @@ body {
 
 .btn {
   align-items: center;
-  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
-  border: 0;
-  border-radius: 8px;
-  box-shadow: rgba(91, 66, 243, 0.3) 0 10px 25px -5px;
+  background: linear-gradient(135deg, #1e4c7a 0%, #1b3558 100%);
+  border: 1px solid #2b6aa3;
+  border-radius: 12px;
+  box-shadow: 0 14px 32px rgba(14, 34, 64, 0.4), 0 3px 12px rgba(0, 0, 0, 0.28);
   box-sizing: border-box;
-  color: #ffffff;
+  color: #f2f7ff;
   display: inline-flex;
   justify-content: center;
-  font-size: 18px;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
   line-height: 1em;
   margin-top: 25px;
-  padding: 0.7em 1.8em;
+  padding: 0.85em 1.9em;
   text-decoration: none;
+  text-transform: none;
   user-select: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   position: relative;
   overflow: hidden;
 }
@@ -68,20 +71,16 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 8px;
-  padding: 2px; 
-  background: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude; 
+  border-radius: 12px;
+  background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.16), transparent 35%), radial-gradient(circle at 80% 0%, rgba(94, 184, 255, 0.18), transparent 30%);
+  opacity: 0.8;
   pointer-events: none;
 }
 
 .btn:hover {
-  transform: scale(1.05);
-  box-shadow: rgba(91, 66, 243, 0.45) 0 12px 35px -5px;
+  transform: translateY(-2px);
+  border-color: #5bb6ff;
+  box-shadow: 0 16px 36px rgba(14, 34, 64, 0.48), 0 4px 14px rgba(0, 0, 0, 0.32);
 }
 section {
   padding: 60px 20px;
