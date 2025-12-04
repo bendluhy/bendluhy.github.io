@@ -239,7 +239,6 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 2px;
-  padding: 10px 12px;
 }
 
 .context-bracket {
