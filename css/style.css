@@ -162,6 +162,22 @@ section {
 .project-card:hover {
   transform: translateY(-5px);
 }
+.project-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.project-info h3 {
+  font-size: 20px;
+  color: #222;
+}
+
+.project-info p {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.5;
+}
 
 .footer {
   background: #0a0a0a; /* darker footer for contrast */
@@ -199,4 +215,56 @@ section {
 .social-icon:hover img {
   transform: scale(1.15);
   filter: invert(100%) drop-shadow(0 0 6px #00ddeb);
+}
+.context-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 16px;
+  background: white;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.context-card::after {
+  content: none;
+}
+
+.context-logo {
+  position: relative;
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: -2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 12px;
+}
+
+.context-bracket {
+  color: #555a6b;
+  transition: color 0.3s ease;
+}
+
+.context-text {
+  background: linear-gradient(90deg, #7c3aed, #8b5cf6, #4f46e5);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: contextPulse 2s infinite;
+}
+
+.context-glow {
+  position: absolute;
+  inset: 0;
+  filter: blur(24px);
+  opacity: 0.5;
+  z-index: -1;
+}
+
+
+@keyframes contextPulse {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(124, 58, 237, 0.35)); }
+  50% { filter: drop-shadow(0 0 12px rgba(79, 70, 229, 0.6)); }
 }
