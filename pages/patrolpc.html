@@ -74,6 +74,114 @@
         margin-top: 35px;
         margin-bottom: 12px;
       }
+
+      /* Gallery grid */
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px;
+        margin: 24px 0;
+      }
+      .gallery-card {
+        border: 1px solid #e1e1e1;
+        border-radius: 12px;
+        background: #fafafa;
+        padding: 10px;
+        text-align: left;
+        cursor: pointer;
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .gallery-card img {
+        width: 100%;
+        border-radius: 8px;
+        display: block;
+      }
+      .gallery-card:hover,
+      .gallery-card:focus-visible {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        outline: none;
+      }
+      .gallery-card span {
+        font-weight: 600;
+        font-size: 14px;
+        color: #222;
+      }
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.8);
+        display: grid;
+        grid-template-areas: "prev img next";
+        grid-template-columns: 60px 1fr 60px;
+        align-items: center;
+        justify-items: center;
+        padding: 20px;
+        z-index: 999;
+      }
+      .lightbox[hidden] {
+        display: none;
+      }
+      .lightbox-img {
+        grid-area: img;
+        max-width: 100%;
+        max-height: 80vh;
+        border-radius: 12px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+      }
+      .lightbox-caption {
+        grid-column: 1 / -1;
+        margin-top: 12px;
+        color: #f2f2f2;
+        text-align: center;
+        font-size: 15px;
+      }
+      .lightbox-nav,
+      .lightbox-close {
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        border: none;
+        padding: 12px 16px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 26px;
+        transition: background 0.15s ease, transform 0.15s ease;
+      }
+      .lightbox-nav:hover,
+      .lightbox-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+      }
+      .lightbox-nav.prev {
+        grid-area: prev;
+      }
+      .lightbox-nav.next {
+        grid-area: next;
+      }
+      .lightbox-close {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        font-size: 24px;
+        line-height: 1;
+      }
+      @media (max-width: 720px) {
+        .lightbox {
+          grid-template-areas:
+            "img img img"
+            "prev . next";
+        }
+        .lightbox {
+          grid-template-columns: 1fr 1fr 1fr;
+          padding: 12px;
+        }
+        .lightbox-img {
+          max-height: 70vh;
+        }
+      }
     </style>
   </head>
 
@@ -161,35 +269,31 @@
       <h2>Screenshots</h2>
       <p>Collection of implemented Control Screens features</p>
 
-      <div style="margin-bottom: 40px">
-        <h3 style="margin-bottom: 10px">Navigation System</h3>
-        <img
-          src="../assets/patrolpc/navdemo.png"
-          style="width: 100%; border-radius: 12px; display: block"
-        />
-      </div>
-      <div style="margin-bottom: 40px">
-        <h3 style="margin-bottom: 10px">Dock Information Overlay</h3>
-        <img 
-          src="../assets/patrolpc/dockOverlay.png"
-          style="width: 100%; border-radius: 12px; display: block"
-        />
+      <div class="gallery">
+        <button class="gallery-card" data-full="../assets/patrolpc/navdemo.png" data-caption="Navigation System">
+          <img src="../assets/patrolpc/navdemo.png" alt="Navigation System" loading="lazy" />
+          <span>Navigation System</span>
+        </button>
+        <button class="gallery-card" data-full="../assets/patrolpc/dockOverlay.png" data-caption="Dock Information Overlay">
+          <img src="../assets/patrolpc/dockOverlay.png" alt="Dock Information Overlay" loading="lazy" />
+          <span>Dock Information Overlay</span>
+        </button>
+        <button class="gallery-card" data-full="../assets/patrolpc/widgetSystem.png" data-caption="Widget System With System Monitor Widget">
+          <img src="../assets/patrolpc/widgetSystem.png" alt="Widget System With System Monitor Widget" loading="lazy" />
+          <span>Widget System With System Monitor Widget</span>
+        </button>
+        <button class="gallery-card" data-full="../assets/patrolpc/camerawidget.png" data-caption="Custom Made Camera Widget">
+          <img src="../assets/patrolpc/camerawidget.png" alt="Custom Made Camera Widget" loading="lazy" />
+          <span>Custom Made Camera Widget</span>
+        </button>
       </div>
 
-      <div style="margin-bottom: 40px">
-        <h3 style="margin-bottom: 10px">Widget System With System Monitor Widget</h3>
-        <img
-          src="../assets/patrolpc/widgetSystem.png"
-          style="width: 100%; border-radius: 12px; display: block"
-        />
-      </div>
-      
-      <div style="margin-bottom: 40px">
-        <h3 style="margin-bottom: 10px">Custom Made Camera Widget</h3>
-        <img
-          src="../assets/patrolpc/camerawidget.png"
-          style="width: 100%; border-radius: 12px; display: block"
-        />
+      <div class="lightbox" hidden>
+        <button class="lightbox-close" aria-label="Close">&times;</button>
+        <button class="lightbox-nav prev" aria-label="Previous">&lsaquo;</button>
+        <img class="lightbox-img" alt="" />
+        <div class="lightbox-caption"></div>
+        <button class="lightbox-nav next" aria-label="Next">&rsaquo;</button>
       </div>
     </section>
 
@@ -208,5 +312,70 @@
         <p>© 2025 Ben Dluhy</p>
       </div>
     </footer>
+    <script>
+      (() => {
+        const cards = Array.from(document.querySelectorAll(".gallery-card"));
+        const lightbox = document.querySelector(".lightbox");
+        const imgEl = document.querySelector(".lightbox-img");
+        const captionEl = document.querySelector(".lightbox-caption");
+        const closeBtn = document.querySelector(".lightbox-close");
+        const prevBtn = document.querySelector(".lightbox-nav.prev");
+        const nextBtn = document.querySelector(".lightbox-nav.next");
+        let index = 0;
+        let touchStartX = 0;
+
+        const open = (i) => {
+          index = i;
+          const card = cards[index];
+          imgEl.src = card.dataset.full;
+          imgEl.alt = card.dataset.caption;
+          captionEl.textContent = card.dataset.caption;
+          lightbox.hidden = false;
+          document.body.style.overflow = "hidden";
+          imgEl.focus();
+        };
+
+        const close = () => {
+          lightbox.hidden = true;
+          document.body.style.overflow = "";
+        };
+
+        const showNext = () => open((index + 1) % cards.length);
+        const showPrev = () => open((index - 1 + cards.length) % cards.length);
+
+        cards.forEach((card, i) => card.addEventListener("click", () => open(i)));
+        closeBtn.addEventListener("click", close);
+        prevBtn.addEventListener("click", showPrev);
+        nextBtn.addEventListener("click", showNext);
+
+        lightbox.addEventListener("click", (e) => {
+          if (e.target === lightbox) close();
+        });
+
+        document.addEventListener("keydown", (e) => {
+          if (lightbox.hidden) return;
+          if (e.key === "Escape") close();
+          if (e.key === "ArrowRight") showNext();
+          if (e.key === "ArrowLeft") showPrev();
+        });
+
+        lightbox.addEventListener(
+          "touchstart",
+          (e) => {
+            touchStartX = e.changedTouches[0].clientX;
+          },
+          { passive: true }
+        );
+
+        lightbox.addEventListener(
+          "touchend",
+          (e) => {
+            const dx = e.changedTouches[0].clientX - touchStartX;
+            if (Math.abs(dx) > 40) (dx < 0 ? showNext : showPrev)();
+          },
+          { passive: true }
+        );
+      })();
+    </script>
   </body>
 </html>
