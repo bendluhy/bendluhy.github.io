@@ -136,13 +136,12 @@
     }
     @media (max-width: 720px) {
       .lightbox {
-        grid-template-areas:
-          "img img img"
-          "prev . next";
-      }
-      .lightbox {
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas: "img";
+        grid-template-columns: 1fr;
         padding: 12px;
+      }
+      .lightbox-nav {
+        display: none;
       }
       .lightbox-img {
         max-height: 70vh;
