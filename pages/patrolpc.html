@@ -75,6 +75,132 @@
         margin-bottom: 12px;
       }
 
+      /* Timeline (What I Worked On) */
+      .timeline {
+        --timeline-accent: #2b6aa3;
+        --timeline-gutter: 150px; /* space for date pill + track */
+        list-style: none;
+        margin: 26px 0 0;
+        padding: 0 0 0 var(--timeline-gutter);
+        position: relative;
+      }
+      /* Hide the old bullet lists (timeline replaces them visually) */
+      .work-section > ul,
+      .work-section > h3 {
+        display: none;
+      }
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: calc(var(--timeline-gutter) - 44px);
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(
+          180deg,
+          rgba(43, 106, 163, 0.25),
+          rgba(43, 106, 163, 0.6),
+          rgba(43, 106, 163, 0.25)
+        );
+      }
+      .timeline-item {
+        position: relative;
+        padding: 0 0 22px 0;
+      }
+      .timeline-item:last-child {
+        padding-bottom: 0;
+      }
+      .timeline-item::before {
+        content: attr(data-date);
+        position: absolute;
+        left: calc(-1 * var(--timeline-gutter) + 10px);
+        top: 10px;
+        max-width: calc(var(--timeline-gutter) - 64px);
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: #0f0f17;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        text-align: center;
+        box-shadow: 0 12px 26px rgba(0, 0, 0, 0.16);
+      }
+      .timeline-card {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        padding: 16px 18px;
+        margin-left: 12px;
+        box-shadow: 0 10px 26px rgba(0, 0, 0, 0.05);
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+      }
+      .timeline-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 16px 34px rgba(0, 0, 0, 0.08);
+      }
+      .timeline-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+      .timeline-header h3 {
+        margin: 0;
+      }
+      .timeline-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: flex-end;
+      }
+      .timeline-tag {
+        font-size: 12px;
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(43, 106, 163, 0.25);
+        background: rgba(43, 106, 163, 0.08);
+        color: #174164;
+        white-space: nowrap;
+      }
+      .timeline-card p {
+        margin: 0;
+        color: #333;
+      }
+      .timeline .timeline-bullets {
+        margin: 10px 0 0 18px;
+      }
+      .timeline .timeline-bullets li {
+        margin-bottom: 10px;
+      }
+      .timeline .timeline-bullets li:last-child {
+        margin-bottom: 0;
+      }
+      @media (max-width: 560px) {
+        .timeline {
+          --timeline-gutter: 120px;
+        }
+        .timeline::before {
+          left: calc(var(--timeline-gutter) - 40px);
+        }
+        .timeline-item::before {
+          font-size: 11px;
+          padding: 5px 9px;
+        }
+        .timeline-card {
+          margin-left: 8px;
+        }
+        .timeline-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .timeline-tags {
+          justify-content: flex-start;
+        }
+      }
+
       /* Gallery grid */
       .gallery {
         display: grid;
@@ -214,7 +340,231 @@
     </section>
 
     <section class="work-section">
-      <h2>What I Worked On</h2>
+      <h2>Working Timeline</h2>
+      
+      <ol class="timeline" aria-label="Patrol PC internship milestones">
+        <li class="timeline-item" data-date="Weeks 1-2 (Sept 9-12, 2025)">
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <h3>System Familiarization & Initial Feature Testing</h3>
+              <div class="timeline-tags">
+                <span class="timeline-tag">Qt</span>
+                <span class="timeline-tag">QML</span>
+                <span class="timeline-tag">Debugging</span>
+              </div>
+            </div>
+            <p>
+              Onboarded to the Control Screens codebase, learned system architecture, and conducted structured feature
+              testing on M3 hardware. Set up Qt debugging and validated bezel interactions and system behavior.
+            </p>
+          </div>
+        </li>
+
+        <li class="timeline-item" data-date="Week 2 (Sept 12-16, 2025)">
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <h3>Main Screen Audio & Display Controls</h3>
+              <div class="timeline-tags">
+                <span class="timeline-tag">QML</span>
+                <span class="timeline-tag">UI Logic</span>
+                <span class="timeline-tag">Debugging</span>
+              </div>
+            </div>
+            <p>
+              Designed, implemented, and finalized sound and brightness sliders on the main screen, ensuring stable
+              interaction with system settings and fixing edge-case UI bugs.
+            </p>
+          </div>
+        </li>
+
+        <li class="timeline-item" data-date="Weeks 3-4 (Sept 17-25, 2025)">
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <h3>Dock Detection & Driver Management</h3>
+              <div class="timeline-tags">
+                <span class="timeline-tag">Qt</span>
+                <span class="timeline-tag">Drivers</span>
+                <span class="timeline-tag">USB</span>
+              </div>
+            </div>
+            <p>
+              Developed dock detection logic, implemented Ethernet and USB driver restart functionality, and began
+              building dock status indicators and USB device displays.
+            </p>
+          </div>
+        </li>
+
+        <li class="timeline-item" data-date="Weeks 4-5 (Sept 29-Oct 2, 2025)">
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <h3>USB Device Manager (Tree System)</h3>
+              <div class="timeline-tags">
+                <span class="timeline-tag">Qt</span>
+                <span class="timeline-tag">USB</span>
+                <span class="timeline-tag">Data Structures</span>
+              </div>
+            </div>
+            <p>
+              Created a hierarchical USB device manager with tree-based organization, handling USB 2.0 compatibility and
+              separating dock-connected devices from host devices.
+            </p>
+          </div>
+        </li>
+
+        <li class="timeline-item" data-date="Week 6 (Oct 7-9, 2025)">
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <h3>USB Manager Finalization & Update System</h3>
+              <div class="timeline-tags">
+                <span class="timeline-tag">QML</span>
+                <span class="timeline-tag">UI Architecture</span>
+                <span class="timeline-tag">Event Handling</span>
+              </div>
+            </div>
+            <p>
+              Finalized USB device manager with automated refresh modes, redesigned layout, and implemented a changelog
+              system within the update menu.
+            </p>
+          </div>
+        </li>
+
+        <li class="timeline-item" data-date="Weeks 6-7 (Oct 14-16, 2025)">
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <h3>Event System Debugging & App Theme</h3>
+              <div class="timeline-tags">
+                <span class="timeline-tag">Qt Events</span>
+                <span class="timeline-tag">Theming</span>
+                <span class="timeline-tag">Debugging</span>
+              </div>
+            </div>
+            <p>
+              Diagnosed and resolved event system issues affecting barcode scanning, then began building a centralized
+              application theming system for UI consistency.
+            </p>
+          </div>
+        </li>
+
+        <li class="timeline-item" data-date="Week 8 (Oct 20-21, 2025)">
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <h3>Dynamic App Theme Integration</h3>
+              <div class="timeline-tags">
+                <span class="timeline-tag">QML</span>
+                <span class="timeline-tag">UI State</span>
+                <span class="timeline-tag">Design Systems</span>
+              </div>
+            </div>
+            <p>
+              Extended the app theme system by adding a "follow AppTheme" option for front-page buttons, allowing
+              dynamic UI styling across screens.
+            </p>
+          </div>
+        </li>
+
+        <li class="timeline-item" data-date="Weeks 8-9 (Oct 22-30, 2025)">
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <h3>Camera Module & Widget System</h3>
+              <div class="timeline-tags">
+                <span class="timeline-tag">Qt</span>
+                <span class="timeline-tag">Modular UI</span>
+                <span class="timeline-tag">Input Handling</span>
+              </div>
+            </div>
+            <p>
+              Started a new camera module, reworked hotkey pages, and implemented a flexible widget system to support
+              modular UI components.
+            </p>
+          </div>
+        </li>
+
+        <li class="timeline-item" data-date="Weeks 9-10 (Nov 3-6, 2025)">
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <h3>Settings Search & UI Customization</h3>
+              <div class="timeline-tags">
+                <span class="timeline-tag">QML</span>
+                <span class="timeline-tag">Search</span>
+                <span class="timeline-tag">UX</span>
+              </div>
+            </div>
+            <p>
+              Built a settings search feature, enhanced widget behavior, fixed hotkey actions, and added support for
+              repositioning the icon bar dynamically.
+            </p>
+          </div>
+        </li>
+
+        <li class="timeline-item" data-date="Weeks 11-12 (Nov 10-20, 2025)">
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <h3>Navigation & App Bar System</h3>
+              <div class="timeline-tags">
+                <span class="timeline-tag">QML</span>
+                <span class="timeline-tag">UI Navigation</span>
+                <span class="timeline-tag">Debugging</span>
+              </div>
+            </div>
+            <p>
+              Debugged the app bar and developed a navigation widget system to improve screen transitions and user
+              workflow.
+            </p>
+          </div>
+        </li>
+
+        <li class="timeline-item" data-date="Weeks 13-14 (Nov 25-Dec 4, 2025)">
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <h3>Update Finalization & Camera Expansion</h3>
+              <div class="timeline-tags">
+                <span class="timeline-tag">Qt</span>
+                <span class="timeline-tag">Camera Systems</span>
+                <span class="timeline-tag">Integration</span>
+              </div>
+            </div>
+            <p>
+              Prepared the system for release updates while expanding the camera application with new features and a
+              custom camera module.
+            </p>
+          </div>
+        </li>
+
+        <li class="timeline-item" data-date="Weeks 15-16 (Dec 8-10, 2025)">
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <h3>Dynamic Camera & Widget Controls</h3>
+              <div class="timeline-tags">
+                <span class="timeline-tag">Qt</span>
+                <span class="timeline-tag">Real-Time UI</span>
+                <span class="timeline-tag">State Management</span>
+              </div>
+            </div>
+            <p>
+              Implemented dynamic camera settings and refined widget control logic for better real-time responsiveness
+              and configuration handling.
+            </p>
+          </div>
+        </li>
+
+        <li class="timeline-item" data-date="Weeks 16-17 (Dec 16-Current)">
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <h3>COM / GPS Splitter Driver</h3>
+              <div class="timeline-tags">
+                <span class="timeline-tag">C++</span>
+                <span class="timeline-tag">Drivers</span>
+                <span class="timeline-tag">Serial Communication</span>
+              </div>
+            </div>
+            <p>
+              Designed and began implementation of a COM port splitter driver to allow shared access to serial GPS data
+              across multiple applications.
+            </p>
+          </div>
+        </li>
+      </ol>
+
       <ul>
         <li>
           <strong>Setting Search Feature</strong> — Built a searchable settings
